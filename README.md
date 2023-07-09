@@ -1,2 +1,2 @@
-# estoque_app
+# Projeto Estoque
 Projeto Treinamento Angular
