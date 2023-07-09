@@ -1,5 +1,4 @@
 //Função para realizar a chamada de cadastro de usuários na API
-
 import axios from "axios";
 import { Observable } from "rxjs";
 import { RegisterRequestModel } from "src/app/models/usuarios/register.request.model";

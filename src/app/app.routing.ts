@@ -3,6 +3,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./components/home/login/login.component";
 import { RegisterComponent } from "./components/home/register/register.component";
 import { PasswordRecoverComponent } from "./components/home/password-recover/password-recover.component";
+import { DashboardComponent } from "./components/admin/dashboard/dashboard.component";
+import { EstoqueCadastroComponent } from "./components/admin/estoque-cadastro/estoque-cadastro.component";
+import { EstoqueConsultaComponent } from "./components/admin/estoque-consulta/estoque-consulta.component";
+import { EstoqueEdicaoComponent } from "./components/admin/estoque-edicao/estoque-edicao.component";
 
 const routes: Routes = [
     {
@@ -16,6 +20,26 @@ const routes: Routes = [
     {
         path: 'home/password-recover',
         component: PasswordRecoverComponent
+
+    },
+    {
+        path: 'admin/dashboard',
+        component: DashboardComponent
+
+    },
+    {
+        path: 'admin/estoque-cadastro',
+        component: EstoqueCadastroComponent
+
+    },
+    {
+        path: 'admin/estoque-consulta',
+        component: EstoqueConsultaComponent
+
+    },
+    {
+        path: 'admin/estoque-edicao/:id',
+        component: EstoqueEdicaoComponent
 
     },
     {

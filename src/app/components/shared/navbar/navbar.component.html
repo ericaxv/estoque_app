@@ -4,9 +4,21 @@
             Controle de Estoques
         </a>
     </div>
-    <span>
-        <a mat-button [routerLink]="['/home/login']">Acessar Sistema</a>
-        <a mat-button [routerLink]="['/home/register']">Criar Conta</a>
-        <a mat-button [routerLink]="['/home/password-recover']">Recuperar Senha</a>
-    </span>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/home/login']">
+            Acessar Sistema</button>
+        <button mat-menu-item [routerLink]="['/home/register']">
+            Criar Conta</button>
+        <button mat-menu-item [routerLink]="['/home/password-recover']">
+            Recuperar Senha</button>
+        <button mat-menu-item [routerLink]="['/admin/dashboard']">
+            Dashboard Principal</button>
+        <button mat-menu-item [routerLink]="['/admin/estoque-cadastro']">
+            Cadastro de Estoques</button>
+        <button mat-menu-item [routerLink]="['/admin/estoque-consulta']">
+            Consulta de Estoques</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu">
+        <mat-icon>home</mat-icon>
+    </button>
 </mat-toolbar>

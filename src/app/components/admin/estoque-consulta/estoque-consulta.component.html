@@ -1,0 +1,62 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Consulta de estoques</mat-card-title>
+        <mat-card-subtitle>Listagem de estoques cadastrados.
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- tabela de estoques -->
+        <mat-table [dataSource]="dataSource" class="table-estoque">
+            <!-- coluna 'nome' -->
+            <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef>Nome do estoque
+
+                </mat-header-cell>
+
+                <mat-cell *matCellDef="let item">{{item.nome}}</mat-cell>
+            </ng-container>
+            <!-- coluna 'descricao' -->
+            <ng-container matColumnDef="descricao">
+                <mat-header-cell *matHeaderCellDef>
+                    Descrição do estoque</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{item.descricao}}
+
+                </mat-cell>
+            </ng-container>
+            <!-- coluna 'datacriacao' -->
+            <ng-container matColumnDef="datacriacao">
+                <mat-header-cell *matHeaderCellDef>Criado em
+
+                </mat-header-cell>
+
+                <mat-cell *matCellDef="let item">{{item.datacriacao
+                    | date : 'dd/MM/yyyy HH:mm'}}</mat-cell>
+
+            </ng-container>
+            <!-- coluna 'datacriacao' -->
+            <ng-container matColumnDef="operacoes">
+                <mat-header-cell *matHeaderCellDef>Operações
+
+                </mat-header-cell>
+
+                <mat-cell *matCellDef="let item">
+                    <button mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    &nbsp;
+                    <button mat-icon-button color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+            <!-- configurando o data table -->
+            <mat-header-row *matHeaderRowDef="columnNames">
+
+            </mat-header-row>
+
+            <mat-row *matRowDef="let row; columns: columnNames">
+
+            </mat-row>
+        </mat-table>
+    </mat-card-content>
+</mat-card>

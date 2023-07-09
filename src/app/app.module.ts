@@ -10,6 +10,10 @@ import { MaterialModule } from './app.material';
 import { RegisterComponent } from './components/home/register/register.component';
 import { PasswordRecoverComponent } from './components/home/password-recover/password-recover.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { EstoqueCadastroComponent } from './components/admin/estoque-cadastro/estoque-cadastro.component';
+import { EstoqueConsultaComponent } from './components/admin/estoque-consulta/estoque-consulta.component';
+import { EstoqueEdicaoComponent } from './components/admin/estoque-edicao/estoque-edicao.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    PasswordRecoverComponent
+    PasswordRecoverComponent,
+    DashboardComponent,
+    EstoqueCadastroComponent,
+    EstoqueConsultaComponent,
+    EstoqueEdicaoComponent
   ],
   imports: [
     BrowserModule,

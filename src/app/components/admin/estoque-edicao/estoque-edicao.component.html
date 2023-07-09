@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Edição de estoques</mat-card-title>
+        <mat-card-subtitle>Utilize o formulário para
+            atualizar um estoque</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="form-estoque">
+            <div class="form-row">
+                <mat-form-field class="full-width">
+                    <mat-label>Nome do estoque:</mat-label>
+                    <input matInput placeholder="Digite o nome aqui" />
+                </mat-form-field>
+            </div>
+            <div class="form-row">
+                <mat-form-field class="full-width">
+                    <mat-label>Descrição do estoque:</mat-label>
+                    <textarea matInput placeholder="Digite o nome aqui"></textarea>
+
+                </mat-form-field>
+            </div>
+            <div class="form-row">
+                <button mat-raised-button color="primary">
+                    Salvar Alterações
+                </button>
+                &nbsp;
+                <button mat-raised-button color="accent" routerLink="/admin/estoque-consulta">
+
+                    Ir para a consulta
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
