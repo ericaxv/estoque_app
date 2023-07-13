@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { postRegister } from 'src/app/services/usuarios/register.service';
+import { CriarContaRequestModel } from 'src/app/models/usuarios/criar-conta.request.model';
+import { postCriarConta } from 'src/app/services/usuarios/criar-conta.service';
 
 @Component({
   selector: 'app-register',
@@ -9,12 +10,13 @@ import { postRegister } from 'src/app/services/usuarios/register.service';
 })
 export class RegisterComponent {
 
+  resultado: string = '';
+
   formRegister = new FormGroup({
-    fullname: new FormControl('', [Validators.required]),
-    username: new FormControl('', [Validators.required]),
+    nome: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    confirm_password: new FormControl('', [Validators.required])
+    senha: new FormControl('', [Validators.required]),
+    senha_confirmacao: new FormControl('', [Validators.required])
   });
 
   // acessar os campos da pagina.
@@ -24,6 +26,24 @@ export class RegisterComponent {
 
   //processar o Submit do formulário
   onSubmit(): void {
-    //postRegister();
+    const request = new CriarContaRequestModel(
+      this.formRegister.value.nome as string,
+      this.formRegister.value.email as string,
+      this.formRegister.value.senha as string,
+      this.formRegister.value.senha_confirmacao as string
+
+    );
+
+    postCriarConta(request)
+        .subscribe({
+          next: (data) => {
+            this.resultado = `Parabéns ${data.nome}, sua conta foi criada com sucesso!`;
+            this.formRegister.reset();
+          },
+          error: (e) => {
+            this.resultado = e.response.data.title;
+            console.log(e.response.data);
+          }
+    });
   }
 }

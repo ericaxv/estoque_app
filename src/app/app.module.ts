@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { EstoqueCadastroComponent } from './components/admin/estoque-cadastro/estoque-cadastro.component';
 import { EstoqueConsultaComponent } from './components/admin/estoque-consulta/estoque-consulta.component';
 import { EstoqueEdicaoComponent } from './components/admin/estoque-edicao/estoque-edicao.component';
+import { MessagesComponent } from './components/shared/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EstoqueEdicaoComponent } from './components/admin/estoque-edicao/estoqu
     DashboardComponent,
     EstoqueCadastroComponent,
     EstoqueConsultaComponent,
-    EstoqueEdicaoComponent
+    EstoqueEdicaoComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
