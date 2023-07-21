@@ -4,5 +4,5 @@ export class AutenticarResponseModel{
     email: string = '';
     accessToken: string = '';
     dataHoraAcesso: Date | null  = null;
-    datahoraExpiracao: Date | null = null;
+    dataHoraExpiracao: Date | null = null;
 }

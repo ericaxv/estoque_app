@@ -20,6 +20,19 @@ export function getData(): AutenticarResponseModel | null {
     }
 }
 
+//verificar se o usuário está autenticado.
+
+export function isAuthenticated() : boolean{
+  let data = getData();
+  console.log('data no isAuthenticated', data);
+  if(data != null){
+    let dataAtual = new Date();
+    let dataExpiracao = new Date(data.dataHoraExpiracao as Date);
+    return dataAtual <= dataExpiracao;
+  }
+  return false;
+}
+
 export function logout(): void {
     localStorage.removeItem(key);
 }

@@ -5,18 +5,20 @@
         </a>
     </div>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['/home/login']">
+        <button *ngIf="!isAuthenticated" mat-menu-item [routerLink]="['/home/login']">
             Acessar Sistema</button>
-        <button mat-menu-item [routerLink]="['/home/register']">
+        <button *ngIf="!isAuthenticated"  mat-menu-item [routerLink]="['/home/register']">
             Criar Conta</button>
-        <button mat-menu-item [routerLink]="['/home/password-recover']">
+        <button *ngIf="!isAuthenticated"  mat-menu-item [routerLink]="['/home/password-recover']">
             Recuperar Senha</button>
-        <button mat-menu-item [routerLink]="['/admin/dashboard']">
+        <button *ngIf="isAuthenticated"  mat-menu-item [routerLink]="['/admin/dashboard']">
             Dashboard Principal</button>
-        <button mat-menu-item [routerLink]="['/admin/estoque-cadastro']">
+        <button *ngIf="isAuthenticated" mat-menu-item [routerLink]="['/admin/estoque-cadastro']">
             Cadastro de Estoques</button>
-        <button mat-menu-item [routerLink]="['/admin/estoque-consulta']">
+        <button *ngIf="isAuthenticated" mat-menu-item [routerLink]="['/admin/estoque-consulta']">
             Consulta de Estoques</button>
+        <button *ngIf="isAuthenticated" mat-menu-item (click)="sair()">
+            Sair do Sistema</button>
     </mat-menu>
     <button mat-icon-button [matMenuTriggerFor]="menu" class="menu">
         <mat-icon>home</mat-icon>

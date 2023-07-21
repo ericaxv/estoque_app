@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +15,7 @@ import { EstoqueCadastroComponent } from './components/admin/estoque-cadastro/es
 import { EstoqueConsultaComponent } from './components/admin/estoque-consulta/estoque-consulta.component';
 import { EstoqueEdicaoComponent } from './components/admin/estoque-edicao/estoque-edicao.component';
 import { MessagesComponent } from './components/shared/messages/messages.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { MessagesComponent } from './components/shared/messages/messages.compone
     EstoqueCadastroComponent,
     EstoqueConsultaComponent,
     EstoqueEdicaoComponent,
-    MessagesComponent
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +36,11 @@ import { MessagesComponent } from './components/shared/messages/messages.compone
     RoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
-  providers: [],
+  schemas : [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

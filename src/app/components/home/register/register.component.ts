@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CriarContaRequestModel } from 'src/app/models/usuarios/criar-conta.request.model';
 import { postCriarConta } from 'src/app/services/usuarios/criar-conta.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,12 @@ import { postCriarConta } from 'src/app/services/usuarios/criar-conta.service';
 export class RegisterComponent {
 
   resultado: string = '';
+
+  constructor(
+    private spinnerService: NgxSpinnerService
+  ){
+
+  }
 
   formRegister = new FormGroup({
     nome: new FormControl('', [Validators.required]),
@@ -26,6 +33,8 @@ export class RegisterComponent {
 
   //processar o Submit do formulário
   onSubmit(): void {
+    
+    this.spinnerService.show();
     const request = new CriarContaRequestModel(
       this.formRegister.value.nome as string,
       this.formRegister.value.email as string,
@@ -44,6 +53,8 @@ export class RegisterComponent {
             this.resultado = e.response.data.title;
             console.log(e.response.data);
           }
+    }).add(() => {
+        this.spinnerService.hide();
     });
   }
 }
