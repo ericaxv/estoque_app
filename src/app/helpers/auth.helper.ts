@@ -24,7 +24,6 @@ export function getData(): AutenticarResponseModel | null {
 
 export function isAuthenticated() : boolean{
   let data = getData();
-  console.log('data no isAuthenticated', data);
   if(data != null){
     let dataAtual = new Date();
     let dataExpiracao = new Date(data.dataHoraExpiracao as Date);

@@ -51,7 +51,6 @@ export class RegisterComponent {
           },
           error: (e) => {
             this.resultado = e.response.data.title;
-            console.log(e.response.data);
           }
     }).add(() => {
         this.spinnerService.hide();

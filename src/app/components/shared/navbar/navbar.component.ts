@@ -20,8 +20,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuthenticated = isAuthenticated(); 
-
-    console.log("no oninit", this.isAuthenticated);
   }
 
   sair(){
