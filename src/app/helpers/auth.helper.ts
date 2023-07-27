@@ -11,13 +11,14 @@ export function login(model: AutenticarResponseModel): void {
 
 //retornar os dados do usuário autenticado
 export function getData(): AutenticarResponseModel | null {
-    let data = decrypt(localStorage.getItem(key) as string);
-    if (data != null) {
-        return JSON.parse(data) as AutenticarResponseModel;
+    let auth = localStorage.getItem(key) as string | null;
+    if(auth != null){
+        let data = decrypt(auth);
+        if (data != null) {
+            return JSON.parse(data) as AutenticarResponseModel;
+        }
     }
-    else {
-        return null;
-    }
+    return null; 
 }
 
 //verificar se o usuário está autenticado.

@@ -6,11 +6,11 @@ import { isAuthenticated } from "../helpers/auth.helper";
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard {
     constructor(
         private router: Router
-    ) {
-    }
+    ) {}
+    
     canActivate() {
         if (isAuthenticated())
             return true;

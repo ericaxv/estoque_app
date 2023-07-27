@@ -17,5 +17,5 @@ function handleResponse<T>(observer: any, response: AxiosResponse<T>){
 
 //capturar retorno de erro da API.
 function handleError(observer: any, error: any){
-    observer.erro(error);
+    observer.error(error);
 }

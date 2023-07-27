@@ -2,7 +2,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { getAllEstoque } from 'src/app/services/estoques/estoques.service';
+import { deleteEstoque, getAllEstoque } from 'src/app/services/estoques/estoques.service';
 import { EstoqueGetResponseModel } from 'src/app/models/estoques/estoque-get.response.model';
 
 @Component({
@@ -17,7 +17,7 @@ export class EstoqueConsultaComponent implements OnInit {
     private spinnerService: NgxSpinnerService
   ) {}
 
-  
+  resultado: string ='';
   //atributos
   columnNames: string[] = ['nome', 'descricao', 'datacriacao','operacoes'];
   //dados do grid
@@ -30,6 +30,7 @@ export class EstoqueConsultaComponent implements OnInit {
         const dados: any[] = [];
         data.forEach((item: EstoqueGetResponseModel) => {
           dados.push({
+            id: item.id,
             nome: item.nome,
             descricao: item.descricao,
             datacriacao: item.dataHoraCadastro
@@ -45,17 +46,32 @@ export class EstoqueConsultaComponent implements OnInit {
     });
   }
   //função para capturar o evento de exclusão
-  onDelete(id: number): void {
-    if (window.confirm('Deseja realment excluir o estoque selecionado?')) {
-      //TODO
+  onDelete(id: string): void {
+    if (window.confirm('Deseja realmente excluir o estoque selecionado?')) {
+      this.spinnerService.show();
+      deleteEstoque(id)
+      .subscribe({
+        next: (data) => {
+          this.resultado = `Estoque ${data.nome} excluído com sucesso!`;
+          this.ngOnInit();
+        },
+        error: (e) => {
+          this.resultado = 'Falha ao excluir o estoque.';
+          console.log(e.error);
+        }
+      }).add(() => {
+        this.spinnerService.hide();
+      })
     }
   }
   //função para capturar o evento de edição
-  onEdit(id: number): void {
+  onEdit(id: string): void {
     this.router.navigate(['/admin/estoque-edicao', id]);
   }
 }
+
 class DataSourceModel {
+  id: string = '';
   nome: string = '';
   descricao: string = '';
   datacriacao: Date | null = null;

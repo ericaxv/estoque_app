@@ -5,6 +5,7 @@
         </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
+        <app-messages [mensagem]="resultado"></app-messages>
         <!-- tabela de estoques -->
         <mat-table [dataSource]="dataSource" class="table-estoque">
             <!-- coluna 'nome' -->
@@ -40,11 +41,11 @@
                 </mat-header-cell>
 
                 <mat-cell *matCellDef="let item">
-                    <button mat-icon-button color="primary" (click)="onEdit(1)">
+                    <button mat-icon-button color="primary" (click)="onEdit(item.id)">
                         <mat-icon>edit</mat-icon>
                     </button>
                     &nbsp;
-                    <button mat-icon-button color="warn" (click)="onDelete(1)">
+                    <button mat-icon-button color="warn" (click)="onDelete(item.id)">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </mat-cell>
