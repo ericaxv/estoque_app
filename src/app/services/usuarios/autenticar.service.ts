@@ -3,20 +3,13 @@ import { Observable } from 'rxjs';
 import { AutenticarRequestModel } from "src/app/models/usuarios/autenticaar-request.model";
 import { AutenticarResponseModel } from "src/app/models/usuarios/autenticar-response.model";
 import { environment } from 'src/enviroments/enviroments';
+import { doRequest } from '../commons/commons.service';
 
 export function postAutenticar(request: AutenticarRequestModel): Observable<AutenticarResponseModel>{
-    return new Observable<AutenticarResponseModel>(observer => {
-        axios.post<AutenticarResponseModel>(`${environment.apiUsuarios}/autenticar`, request)
-            .then(
-                response => {
-                    observer.next(response.data);
-                    observer.complete();
-                }
-            )
-            .catch(
-                e => {
-                    observer.error(e)
-                }
-            )
-    })
+    const config = {
+        method: 'post',
+        url: `${environment.apiUsuarios}/autenticar`,
+        data: request
+    };
+    return doRequest<AutenticarResponseModel>(config);
 }

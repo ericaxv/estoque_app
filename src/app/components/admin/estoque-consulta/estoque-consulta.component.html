@@ -9,7 +9,7 @@
         <mat-table [dataSource]="dataSource" class="table-estoque">
             <!-- coluna 'nome' -->
             <ng-container matColumnDef="nome">
-                <mat-header-cell *matHeaderCellDef>Nome do estoque
+                <mat-header-cell *matHeaderCellDef>Nome do Estoque
 
                 </mat-header-cell>
 
@@ -18,14 +18,14 @@
             <!-- coluna 'descricao' -->
             <ng-container matColumnDef="descricao">
                 <mat-header-cell *matHeaderCellDef>
-                    Descrição do estoque</mat-header-cell>
+                    Descrição</mat-header-cell>
                 <mat-cell *matCellDef="let item">{{item.descricao}}
 
                 </mat-cell>
             </ng-container>
             <!-- coluna 'datacriacao' -->
             <ng-container matColumnDef="datacriacao">
-                <mat-header-cell *matHeaderCellDef>Criado em
+                <mat-header-cell *matHeaderCellDef>Criado em:
 
                 </mat-header-cell>
 

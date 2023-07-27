@@ -5,92 +5,53 @@ import { EstoquePostRequestModel } from "src/app/models/estoques/estoque-post.re
 import { EstoqueGetResponseModel } from "src/app/models/estoques/estoque-get.response.model";
 import { EstoquePutRequestModel } from 'src/app/models/estoques/estoque-put.request.model';
 import { getData, isAuthenticated } from 'src/app/helpers/auth.helper';
+import { doRequest } from '../commons/commons.service';
 
 export function postEstoque(request: EstoquePostRequestModel):
     Observable<EstoqueGetResponseModel> {
-    return new Observable<EstoqueGetResponseModel>(observer => {
-        axios.post<EstoqueGetResponseModel>
-            (`${environment.apiEstoques}`, request)
-
-            .then(
-                response => {
-                    observer.next(response.data);
-                    observer.complete();
-                }
-            )
-            .catch(
-                e => { observer.error(e) }
-            )
-    });
+    const config = {
+        method: 'post',
+        url: `${environment.apiEstoques}`,
+        data: request
+    };
+    return doRequest<EstoqueGetResponseModel>(config);
 }
+
 export function putEstoque(request: EstoquePutRequestModel):
     Observable<EstoqueGetResponseModel> {
-    return new Observable<EstoqueGetResponseModel>(observer => {
-        axios.put<EstoqueGetResponseModel>
-            (`${environment.apiEstoques}`, request)
-
-            .then(
-                response => {
-                    observer.next(response.data);
-                    observer.complete();
-                }
-            )
-            .catch(
-                e => { observer.error(e) }
-            )
-    });
+    const config = {
+        method: 'put',
+        url: `${environment.apiEstoques}`,
+        data: request
+    };
+    return doRequest<EstoqueGetResponseModel>(config);
 }
+
 export function deleteEstoque(id: string)
     : Observable<EstoqueGetResponseModel> {
-    return new Observable<EstoqueGetResponseModel>
-        (observer => {
-            axios.delete<EstoqueGetResponseModel>
-                (`${environment.apiEstoques}/${id}`)
-
-                .then(
-                    response => {
-                        observer.next(response.data);
-                        observer.complete();
-                    }
-                )
-                .catch(
-                    e => { observer.error(e) }
-                )
-        });
+    const config = {
+        method: 'delete',
+        url: `${environment.apiEstoques}/${id}`,
+    };
+    return doRequest<EstoqueGetResponseModel>(config);
 }
+
 export function getAllEstoque(): Observable<EstoqueGetResponseModel[]> {
-    return new Observable<EstoqueGetResponseModel[]>(observer => {
-        axios.get<EstoqueGetResponseModel[]>
-            (`${environment.apiEstoques}`)
+    const config = {
+        method: 'get',
+        url: `${environment.apiEstoques}`
 
-            .then(
-                response => {
-                    observer.next(response.data);
-                    observer.complete();
-                }
-            )
-            .catch(
-                e => { observer.error(e) }
-            )
-    });
+    };
+    return doRequest<EstoqueGetResponseModel[]>(config);
 }
+
 export function getByIdEstoque(id: string):
     Observable<EstoqueGetResponseModel> {
-    return new Observable<EstoqueGetResponseModel>
-        (observer => {
-            axios.get<EstoqueGetResponseModel>
-                (`${environment.apiEstoques}/${id}`)
-
-                .then(
-                    response => {
-                        observer.next(response.data);
-                        observer.complete();
-                    }
-                )
-                .catch(
-                    e => { observer.error(e) }
-                )
-        });
+    const config = {
+        method: 'get',
+        url: `${environment.apiEstoques}/${id}`
+    };
+    return doRequest<EstoqueGetResponseModel>(config);
 }
 
 //criando o interceptor através do AXIOS
