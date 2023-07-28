@@ -6,6 +6,7 @@ import { EstoqueGetResponseModel } from "src/app/models/estoques/estoque-get.res
 import { EstoquePutRequestModel } from 'src/app/models/estoques/estoque-put.request.model';
 import { getData, isAuthenticated } from 'src/app/helpers/auth.helper';
 import { doRequest } from '../commons/commons.service';
+import { downloadFile } from 'src/app/helpers/download.helper';
 
 export function postEstoque(request: EstoquePostRequestModel):
     Observable<EstoqueGetResponseModel> {
@@ -52,6 +53,40 @@ export function getByIdEstoque(id: string):
         url: `${environment.apiEstoques}/${id}`
     };
     return doRequest<EstoqueGetResponseModel>(config);
+}
+
+export function getReportPDF() {
+    return new Observable((observer) => {
+        axios.get(`${environment.apiEstoques}/relatorio-pdf`, {
+            responseType: 'arraybuffer'
+        })
+            .then(response => {
+                const data = response.data;
+                downloadFile(data, 'PDF', 'relatorio-estoques');
+                observer.next();
+                observer.complete();
+            })
+            .catch(error => {
+                observer.error(error);
+            })
+    })
+}
+
+export function getReportExcel() {
+    return new Observable((observer) => {
+        axios.get(`${environment.apiEstoques}/relatorio-excel`, {
+            responseType: 'arraybuffer'
+        })
+            .then(response => {
+                const data = response.data;
+                downloadFile(data, 'EXCEL', 'relatorio-estoques');
+                observer.next();
+                observer.complete();
+            })
+            .catch(error => {
+                observer.error(error);
+            })
+    })
 }
 
 //criando o interceptor através do AXIOS
