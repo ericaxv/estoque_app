@@ -25,7 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Project in production
 
-Link: `http://ericaxv-001-site1.ftempurl.com/`.
+[Link](http://ericaxv-001-site1.ftempurl.com/).
 
 ## Further help
 
