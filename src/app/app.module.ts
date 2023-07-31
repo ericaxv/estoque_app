@@ -17,6 +17,9 @@ import { EstoqueConsultaComponent } from './components/admin/estoque-consulta/es
 import { EstoqueEdicaoComponent } from './components/admin/estoque-edicao/estoque-edicao.component';
 import { MessagesComponent } from './components/shared/messages/messages.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ProdutosCadastroComponent } from './components/admin/produtos-cadastro/produtos-cadastro.component';
+import { ProdutosConsultaComponent } from './components/admin/produtos-consulta/produtos-consulta.component';
+import { ProdutosEdicaoComponent } from './components/admin/produtos-edicao/produtos-edicao.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     EstoqueConsultaComponent,
     EstoqueEdicaoComponent,
     MessagesComponent,
+    ProdutosCadastroComponent,
+    ProdutosConsultaComponent,
+    ProdutosEdicaoComponent,
   ],
   imports: [
     BrowserModule,

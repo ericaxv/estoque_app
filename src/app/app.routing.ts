@@ -8,6 +8,9 @@ import { EstoqueCadastroComponent } from "./components/admin/estoque-cadastro/es
 import { EstoqueConsultaComponent } from "./components/admin/estoque-consulta/estoque-consulta.component";
 import { EstoqueEdicaoComponent } from "./components/admin/estoque-edicao/estoque-edicao.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { ProdutosCadastroComponent } from "./components/admin/produtos-cadastro/produtos-cadastro.component";
+import { ProdutosConsultaComponent } from "./components/admin/produtos-consulta/produtos-consulta.component";
+import { ProdutosEdicaoComponent } from "./components/admin/produtos-edicao/produtos-edicao.component";
 
 const routes: Routes = [
     {
@@ -44,6 +47,24 @@ const routes: Routes = [
     {
         path: 'admin/estoque-edicao/:id',
         component: EstoqueEdicaoComponent,
+        canActivate: [AuthGuard]
+
+    },
+    {
+        path: 'admin/produtos-cadastro/:estoqueId',
+        component: ProdutosCadastroComponent,
+        canActivate: [AuthGuard]
+
+    },
+    {
+        path: 'admin/produtos-consulta/:estoqueId',
+        component: ProdutosConsultaComponent,
+        canActivate: [AuthGuard]
+
+    },
+    {
+        path: 'admin/produtos-edicao/:estoqueId/:produtoId',
+        component: ProdutosEdicaoComponent,
         canActivate: [AuthGuard]
 
     },

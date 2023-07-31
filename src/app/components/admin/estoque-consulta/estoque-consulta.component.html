@@ -52,6 +52,11 @@
                 </mat-header-cell>
 
                 <mat-cell *matCellDef="let item">
+                    <button mat-flat-button color="primary" (click)="onProducts(item.id)">
+                        <mat-icon>list</mat-icon>
+                        Produtos
+                    </button>
+                    &nbsp;
                     <button mat-icon-button color="primary" (click)="onEdit(item.id)">
                         <mat-icon>edit</mat-icon>
                     </button>

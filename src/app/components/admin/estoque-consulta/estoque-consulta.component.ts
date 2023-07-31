@@ -69,6 +69,11 @@ export class EstoqueConsultaComponent implements OnInit {
     this.router.navigate(['/admin/estoque-edicao', id]);
   }
 
+   //função para navegar para o produtos
+   onProducts(id: string): void {
+    this.router.navigate(['/admin/produtos-consulta', id]);
+  }
+
   //função para download dos relatórios
   onDownloadClick(opcao: string): void {
     this.spinnerService.show();
